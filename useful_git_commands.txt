@@ -1,0 +1,5 @@
+git clone url destination
+git add filename
+git commit -m filename
+git push filename
+git status
