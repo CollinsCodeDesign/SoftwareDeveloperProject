@@ -11,5 +11,5 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 ![](./text_extractor/textExtractor.png) <br >
 *This takes an image with texts, extracts the text, and prints it.This is an extremely simple to do but it could be a cool addon.* <br > 
 
-## Project Idea 2: Pathfinding Visualization of the A* <br >
+## Project Idea 2: Pathfinding Visualization of the A* Algorithm <br >
 ![](./PathfindingGame/a_star_al.gif) <br >
