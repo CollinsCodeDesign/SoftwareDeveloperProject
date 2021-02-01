@@ -12,4 +12,4 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 *This takes an image with texts, extracts the text, and prints it.This is an extremely simple to do but it could be a cool addon.* <br > 
 
 ## Project Idea 2: Pathfinding Visualization of the A* <br >
-![](./Pathfinding/a_star_al.gif) <br >
+![](./PathfindingGame/a_star_al.gif) <br >
