@@ -11,4 +11,4 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 ![](./face_detector/face_detect_v1_1.gif)
 
 ## Project: Face and eye detector V1.2 <br />
-![](./face_detector/face_detect_V1_2.gif)
+![](./face_detector/face_detector_V1_2.gif)
