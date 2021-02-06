@@ -80,7 +80,7 @@ def checkClicked():
         else:
             return False
     
-#out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
+out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
 num = 0
 num2 = 0
 wait = True
@@ -123,6 +123,7 @@ while start:
     # Window name in which image is displayed
     num = len(faces)
     cv2.imwrite('1.png',img)
+    #out.write(img)
     faceImg = pygame.image.load('1.png')
     screen.blit(faceImg,(0,0))
     pygame.draw.rect(screen,(0,0,0),pygame.Rect(0,480,200,580))
@@ -134,7 +135,7 @@ while start:
             cap.release()
             pygame.display.quit()
             pygame.quit()
-    #cv2.imshow("Window",img)
+
     if(num != num2):
         print(' Faces ' + str(len(faces)) + '\n', end='', flush=True)
         num2 = num
@@ -169,6 +170,3 @@ while start:
         pygame.display.quit()
         pygame.quit()
             
-#    if ret == True:
-        # Write the frame into the file 'output.avi'
-#        out.write(img)
