@@ -1,0 +1,19 @@
+{
+    "camera_input_info": "Default is 0 webcams usually 0, second one is 1",
+    "camera_input": "0",
+    "face_xml_cascade": "haarcascade_frontalface_default.xml",
+    "eye_xml_cascade": "haarcascade_eye.xml",
+    "smile_xml_cascade": "haarcascade_smile.xml",
+    "face_box_color": "200,200,0",
+    "eye_box_color": "0,255,0",
+    "smile_box_color": "0,0,255",
+    "font_size_of_label": "1",
+    "font_thickness_of_label": "1",
+    "color_of_face_label": "255,0,255",
+    "color_of_eye_label": "255,255,0",
+    "color_of_smile_label": "0,255,255",
+    "line_thickness_of_boxes": "1",
+    "adjust_label_x": "5",
+    "adjust_label_y": "15",
+    "pygame_window_name": "Face Detector"
+}
