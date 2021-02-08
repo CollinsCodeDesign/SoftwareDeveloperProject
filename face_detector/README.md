@@ -9,3 +9,6 @@ This is just an example and I would like some ideas on how to make it better. If
 
 ![](face_detect_v1_1.gif) <br >
 *I have added labels to the detections and smile detection to the project.* 
+
+![](face_detector_v1_2.gif) <br >
+*I have added icons to indicate the type of detections for eyes and face to the project.* 
