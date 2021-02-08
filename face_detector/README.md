@@ -12,3 +12,4 @@ This is just an example and I would like some ideas on how to make it better. If
 
 ![](face_detector_V1_2.gif) <br >
 *I have added icons to indicate the type of detections for eyes and face to the project.* 
+This needs you to install pygame, 
