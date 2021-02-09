@@ -15,3 +15,4 @@ This is just an example and I would like some ideas on how to make it better. If
 This needs you to install pygame and gTTS <br >
 Step 1: Go to Tool > Manage packages > Type: pygame > then install <br >
 Step 2: Go to Tool > Manage packages > Type: gTTS > then install <br >
+Step 3: sudo apt install mpg321 <br >
