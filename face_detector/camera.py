@@ -4,10 +4,58 @@ import pygame
 import cv2
 from gtts import gTTS
 import os
+import pygame as pg
 from subprocess import Popen, PIPE
 from pygame.locals import *
 pygame.init()
-        
+
+COLOR_INACTIVE = pg.Color('lightskyblue3')
+COLOR_ACTIVE = pg.Color('dodgerblue2')
+FONT = pg.font.Font(None, 32)
+
+
+class InputBox:
+
+    def __init__(self, x, y, w, h, text=''):
+        self.rect = pg.Rect(x, y, w, h)
+        self.color = COLOR_INACTIVE
+        self.text = text
+        self.txt_surface = FONT.render(text, True, self.color)
+        self.active = False
+
+    def handle_event(self, event):
+        if event.type == pg.MOUSEBUTTONDOWN:
+            # If the user clicked on the input_box rect.
+            if self.rect.collidepoint(event.pos):
+                # Toggle the active variable.
+                self.active = not self.active
+            else:
+                self.active = False
+            # Change the current color of the input box.
+            self.color = COLOR_ACTIVE if self.active else COLOR_INACTIVE
+        if event.type == pg.KEYDOWN:
+            if self.active:
+                if event.key == pg.K_RETURN:
+                    print(self.text)
+                    self.text = ''
+                elif event.key == pg.K_BACKSPACE:
+                    self.text = self.text[:-1]
+                else:
+                    self.text += event.unicode
+                # Re-render the text.
+                self.txt_surface = FONT.render(self.text, True, self.color)
+
+    def update(self):
+        # Resize the box if the text is too long.
+        width = max(200, self.txt_surface.get_width()+10)
+        self.rect.w = width
+
+    def draw(self, screen):
+        # Blit the text.
+        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
+        # Blit the rect.
+        pg.draw.rect(screen, self.color, self.rect, 2)
+
 def make_audio_message(message):
     # Language in which you want to convert 
     language = 'en'
@@ -18,31 +66,37 @@ def text_objects(text, font):
     textSurface = font.render(text, True, (0,0,0))
     return textSurface, textSurface.get_rect()
 
-def button(msg,x,y,w,h,ic,ac,action=None):
-    mouse = pygame.mouse.get_pos()
-    click = pygame.mouse.get_pressed()
-    if x+w > mouse[0] > x and y+h > mouse[1] > y:
-        pygame.draw.rect(screen, ac,(x,y,w,h))
-        if click[0] == 1 and action != None:
-            action()
-    else:
-        pygame.draw.rect(screen, ic,(x,y,w,h))
-        
-    smallText = pygame.font.SysFont("comicsansms",20)
-    textSurf, textRect = text_objects(msg, smallText)
-    textRect.center = ( (x+(w/2)), (y+(h/2)) )
-    screen.blit(textSurf, textRect)
-    
-def checkClicked():
-    click = pygame.mouse.get_pressed()
-    x, y = 0,1
-    click = 0
-    if pygame.mouse.get_pos()[x] > x and pygame.mouse.get_pos()[x] < x + 100:
-        if pygame.mouse.get_pos()[y] > y and pygame.mouse.get_pos()[y] < y + 50:
-            return True
-        else:
-            return False
+
+class button():
+    def __init__(self, color, x,y,width,height, text=''):
+        self.color = color
+        self.x = x
+        self.y = y
+        self.width = width
+        self.height = height
+        self.text = text
+
+    def draw(self,win,outline=None):
+        #Call this method to draw the button on the screen
+        if outline:
+            pygame.draw.rect(win, outline, (self.x-2,self.y-2,self.width+4,self.height+4),0)
             
+        pygame.draw.rect(win, self.color, (self.x,self.y,self.width,self.height),0)
+        
+        if self.text != '':
+            font = pygame.font.SysFont('comicsans', 30)
+            text = font.render(self.text, 1, (0,0,0))
+            win.blit(text, (self.x + (self.width/2 - text.get_width()/2), self.y + (self.height/2 - text.get_height()/2)))
+
+    def isOver(self, pos):
+        #Pos is the mouse position or a tuple of (x,y) coordinates
+        if pos[0] > self.x and pos[0] < self.x + self.width:
+            if pos[1] > self.y and pos[1] < self.y + self.height:
+                return True      
+        return False
+
+
+
 if __name__ == "__main__":
     with open('face_detector_config.json','r') as json_config:
         config = json.load(json_config)
@@ -63,13 +117,13 @@ if __name__ == "__main__":
         adjust_label_y = int(config["adjust_label_y"])
         pygame_window_name = config["pygame_window_name"]
         
-    start = True
+    start = False
     count_max = 0
     count_d = 10
     capture = cv2.VideoCapture(camera_input)
     frame_width = int(capture.get(3))
     frame_height = int(capture.get(4))
-    out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
+    #out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
     screen = pygame.display.set_mode((frame_width ,frame_height + 100))
     pygame.display.set_caption(pygame_window_name)
     face_cascade = cv2.CascadeClassifier(face_xml_cascade)
@@ -80,12 +134,54 @@ if __name__ == "__main__":
     num2 = 0
     wait = True
     eye_detected = False
-    # while wait:
-    #     pygame.draw.rect(screen,(255,255,255),pygame.Rect(0,0,640,480))
-    #     button("GO!",550,480,100,50,(0,100,0),(0,255,0))
-    #     pygame.display.update()
+    def redrawWindow():
+        greenButton.draw(screen,(0,0,0))
+    greenButton = button((192, 192, 192),470,500,150,50, 'Start')
+    while wait:
+        pygame.draw.rect(screen,(255,255,255),pygame.Rect(0,0,640,480))
+        redrawWindow()
+        pygame.display.update()
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if greenButton.isOver(pos):
+                wait = False
+                start = True
+        if event.type == pygame.MOUSEMOTION:
+            if greenButton.isOver(pos):
+                greenButton.color = (20,100,100)
+            else:
+                greenButton.color = (192, 192, 192)
+        if event.type == pygame.QUIT:
+                start = False
+                pygame.display.quit()
+                pygame.quit()
     #Continuely get camera frames
+
     while start:
+        input_box1 = InputBox(250, 490, 100, 32)
+        input_box2 = InputBox(250, 530, 100, 32)
+        input_boxes = [input_box1, input_box2]
+
+        redrawWindow()
+        
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+            for box in input_boxes:
+                box.handle_event(event)
+        for box in input_boxes:
+                box.update()
+                box.draw(screen)
+                
+        pygame.display.update()        
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if greenButton.isOver(pos):
+                print('clicked')
+        if event.type == pygame.MOUSEMOTION:
+            if greenButton.isOver(pos):
+                greenButton.color = (20,100,100)
+            else:
+                greenButton.color = (192, 192, 192)
         ret, img = capture.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -115,7 +211,6 @@ if __name__ == "__main__":
         faceImg = pygame.image.load('1.png')
         screen.blit(faceImg,(0,0))
         pygame.draw.rect(screen,(0,0,0),pygame.Rect(0,480,200,580))
-        button("GO!",550,480,100,50,(0,100,0),(0,255,0))
         pygame.display.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -134,6 +229,7 @@ if __name__ == "__main__":
             pygame.display.update()
             
         if(count_max < num):
+            #os.system("mpg321 welcome.mp3")
             process = Popen(['mpg321', 'welcome.mp3'], stdout=PIPE, stderr=PIPE)
             count_max = num
         elif(0 == int(len(faces))):
@@ -148,9 +244,6 @@ if __name__ == "__main__":
                 screen.blit(eyeIcon,(100,480))
                 pygame.draw.rect(screen,(255,255,255),pygame.Rect(0,480,200,580),1)
                 pygame.display.update()
-        if checkClicked() == True:
-            start = False
-            pygame.display.quit()
-            pygame.quit()
+
    
             
