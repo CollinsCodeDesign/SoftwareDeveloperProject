@@ -5,6 +5,7 @@ import cv2
 from gtts import gTTS
 import os
 import pygame as pg
+import time
 from subprocess import Popen, PIPE
 from pygame.locals import *
 pygame.init()
@@ -124,7 +125,7 @@ if __name__ == "__main__":
     frame_width = int(capture.get(3))
     frame_height = int(capture.get(4))
     #out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
-    screen = pygame.display.set_mode((frame_width ,frame_height + 100))
+    screen = pygame.display.set_mode((frame_width + 0,frame_height + 100))
     pygame.display.set_caption(pygame_window_name)
     face_cascade = cv2.CascadeClassifier(face_xml_cascade)
     eye_cascade = cv2.CascadeClassifier(eye_xml_cascade)
@@ -147,6 +148,8 @@ if __name__ == "__main__":
             if greenButton.isOver(pos):
                 wait = False
                 start = True
+                greenButton = button((192, 192, 192),470,500,150,50, 'Quit')
+                time.sleep(1)
         if event.type == pygame.MOUSEMOTION:
             if greenButton.isOver(pos):
                 greenButton.color = (20,100,100)
@@ -176,7 +179,11 @@ if __name__ == "__main__":
         pygame.display.update()        
         if event.type == pygame.MOUSEBUTTONDOWN:
             if greenButton.isOver(pos):
-                print('clicked')
+                pygame.display.quit()
+                pygame.quit()
+                capture.release()
+                time.sleep(1)
+                
         if event.type == pygame.MOUSEMOTION:
             if greenButton.isOver(pos):
                 greenButton.color = (20,100,100)
