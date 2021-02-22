@@ -1,7 +1,7 @@
 {
     "camera_input_info": "Default is 0 webcams usually 0, second one is 1",
     "camera_input": "0",
-    "screen_added_width": "10",
+    "screen_added_width": "100",
     "screen_added_height": "100",
     "face_xml_cascade": "haarcascade_frontalface_default.xml",
     "eye_xml_cascade": "haarcascade_eye.xml",

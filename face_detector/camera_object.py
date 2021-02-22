@@ -148,7 +148,7 @@ if __name__ == "__main__":
         
     greenButton = button((192, 192, 192),470,500,100,40, 'Start')
     while wait:
-        pygame.draw.rect(screen,(255,255,255),pygame.Rect(0,0,640,480))
+        pygame.draw.rect(screen,(255,255,255),pygame.Rect(50,0,640,480))
         redrawWindow()
         pygame.display.update()
         for event in pygame.event.get():
@@ -226,7 +226,7 @@ if __name__ == "__main__":
         cv2.imwrite('1.png',img)
         #out.write(img)
         faceImg = pygame.image.load('1.png')
-        screen.blit(faceImg,(0,0))
+        screen.blit(faceImg,(50,0))
         pygame.draw.rect(screen,(0,0,0),pygame.Rect(0,480,200,580))
         pygame.display.update()
         for event in pygame.event.get():
