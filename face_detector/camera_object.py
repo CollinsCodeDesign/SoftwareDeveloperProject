@@ -14,50 +14,56 @@ COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font(None, 32)
 
+def inputBoxTest(screen):
+    font = pg.font.Font(None, 32)
+    clock = pg.time.Clock()
+    input_box = pg.Rect(100, 100, 140, 32)
+    color_inactive = pg.Color('lightskyblue3')
+    color_active = pg.Color('dodgerblue2')
+    color = color_inactive
+    active = False
+    text = ''
+    done = False
 
-class InputBox:
-
-    def __init__(self, x, y, w, h, text=''):
-        self.rect = pg.Rect(x, y, w, h)
-        self.color = COLOR_INACTIVE
-        self.text = text
-        self.txt_surface = FONT.render(text, True, self.color)
-        self.active = False
-
-    def handle_event(self, event):
-        if event.type == pg.MOUSEBUTTONDOWN:
-            # If the user clicked on the input_box rect.
-            if self.rect.collidepoint(event.pos):
-                # Toggle the active variable.
-                self.active = not self.active
-            else:
-                self.active = False
-            # Change the current color of the input box.
-            self.color = COLOR_ACTIVE if self.active else COLOR_INACTIVE
-        if event.type == pg.KEYDOWN:
-            if self.active:
-                if event.key == pg.K_RETURN:
-                    print(self.text)
-                    self.text = ''
-                elif event.key == pg.K_BACKSPACE:
-                    self.text = self.text[:-1]
+    while not done:
+        for event in pg.event.get():
+            if event.type == pg.QUIT:
+                done = True
+            if event.type == pg.MOUSEBUTTONDOWN:
+                # If the user clicked on the input_box rect.
+                if input_box.collidepoint(event.pos):
+                    # Toggle the active variable.
+                    active = not active
                 else:
-                    self.text += event.unicode
-                # Re-render the text.
-                self.txt_surface = FONT.render(self.text, True, self.color)
+                    active = False
+                # Change the current color of the input box.
+                color = color_active if active else color_inactive
+            if event.type == pg.KEYDOWN:
+                if active:
+                    if event.key == pg.K_RETURN:
+                        print(text)
+                        text = ''
+                    elif event.key == pg.K_BACKSPACE:
+                        text = text[:-1]
+                    else:
+                        text += event.unicode
+            if event.type == pg.QUIT:
+                pygame.display.quit()
+                pygame.quit()
 
-    def update(self):
+        screen.fill((30, 30, 30))
+        # Render the current text.
+        txt_surface = font.render(text, True, color)
         # Resize the box if the text is too long.
-        width = max(200, self.txt_surface.get_width()+10)
-        self.rect.w = width
-
-    def draw(self, screen):
+        width = max(200, txt_surface.get_width()+10)
+        input_box.w = width
         # Blit the text.
-        screen.blit(self.txt_surface, (self.rect.x+5, self.rect.y+5))
-        # Blit the rect.
-        pg.draw.rect(screen, self.color, self.rect, 2)
-        
-#----------------------------------------------------------------------
+        screen.blit(txt_surface, (input_box.x+5, input_box.y+5))
+        # Blit the input_box rect.
+        pg.draw.rect(screen, color, input_box, 2)
+
+        pg.display.flip()
+        clock.tick(30)
 
 def make_audio_message(message):
     # Language in which you want to convert 
@@ -124,29 +130,36 @@ class LoadJson:
             
 #----------------------------------------------------------------------
 
-if __name__ == "__main__":    
+def main():
     settings = LoadJson('face_detector_config.json')   
     start = False
+    wait = True
+    config = False
+    eye_detected = False
+    num = 0
+    num2 = 0
+    
     #count_max = 0
     #count_d = 10
+    
     capture = cv2.VideoCapture(settings.camera_input)
     frame_width = int(capture.get(3))
     frame_height = int(capture.get(4))
+    
     #out = cv2.VideoWriter('outpy.avi',cv2.VideoWriter_fourcc('M','J','P','G'), 10, (frame_width,frame_height))
+    
     screen = pygame.display.set_mode((frame_width + settings.screen_added_width,frame_height + settings.screen_added_height))
     pygame.display.set_caption(settings.pygame_window_name)
     face_cascade = cv2.CascadeClassifier(settings.face_xml_cascade)
     eye_cascade = cv2.CascadeClassifier(settings.eye_xml_cascade)
     smile_cascade = cv2.CascadeClassifier(settings.smile_xml_cascade)
-
-    num = 0
-    num2 = 0
-    wait = True
-    eye_detected = False
+    
     def redrawWindow():
         greenButton.draw(screen,(0,0,0))
+        settingsBt.draw(screen, (0,0,0))
         
     greenButton = button((192, 192, 192),470,500,100,40, 'Start')
+    settingsBt = button((192, 192, 192),570,400,100,40, 'Settings')
     while wait:
         pygame.draw.rect(screen,(255,255,255),pygame.Rect(50,0,640,480))
         redrawWindow()
@@ -159,34 +172,51 @@ if __name__ == "__main__":
                 start = True
                 greenButton = button((192, 192, 192),470,500,100,40, 'Quit')
                 time.sleep(1)
+            elif settingsBt.isOver(pos):
+                config = True
+                wait = False
+                
         if event.type == pygame.MOUSEMOTION:
             if greenButton.isOver(pos):
                 greenButton.color = (20,100,100)
+            elif settingsBt.isOver(pos):
+                settingsBt.color = (20,100,100)
             else:
                 greenButton.color = (192, 192, 192)
+                settingsBt.color = (192, 192, 192)
         if event.type == pygame.QUIT:
                 start = False
                 pygame.display.quit()
                 pygame.quit()
                 time.sleep(1)
-
-#Continuely get camera frames
+    while config:
+        inputBoxTest(screen)
+#         input_box1 = InputBox(250, 490, 100, 32)
+#         input_box2 = InputBox(250, 530, 100, 32)
+#         input_boxes = [input_box1, input_box2]
+#         pygame.draw.rect(screen,(192, 192, 192),pygame.Rect(0,0,450,580))
+#         for event in pygame.event.get():
+#             pos = pygame.mouse.get_pos()
+#             for box in input_boxes:
+#                 box.handle_event(event)
+#         for box in input_boxes:
+#                 box.update()
+#                 box.draw(screen)
+#         if event.type == pygame.QUIT:
+#                 capture.release()
+#                 pygame.display.quit()
+#                 pygame.quit()
+#         pygame.display.update()
+#             
+#         
+# #Continuely get camera frames
     while start:
-        input_box1 = InputBox(250, 490, 100, 32)
-        input_box2 = InputBox(250, 530, 100, 32)
-        input_boxes = [input_box1, input_box2]
 
         redrawWindow()
-        
+        pygame.display.update() 
         for event in pygame.event.get():
             pos = pygame.mouse.get_pos()
-            for box in input_boxes:
-                box.handle_event(event)
-        for box in input_boxes:
-                box.update()
-                box.draw(screen)
-                
-        pygame.display.update()        
+             
         if event.type == pygame.MOUSEBUTTONDOWN:
             if greenButton.isOver(pos):
                 pygame.display.quit()
@@ -261,6 +291,9 @@ if __name__ == "__main__":
                 screen.blit(eyeIcon,(100,480))
                 pygame.draw.rect(screen,(255,255,255),pygame.Rect(0,480,200,580),1)
                 pygame.display.update()
+
+if __name__ == "__main__":    
+    main()
 
    
             
