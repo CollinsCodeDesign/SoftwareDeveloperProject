@@ -158,8 +158,8 @@ def main():
         greenButton.draw(screen,(0,0,0))
         settingsBt.draw(screen, (0,0,0))
         
-    greenButton = button((192, 192, 192),470,500,100,40, 'Start')
-    settingsBt = button((192, 192, 192),570,400,100,40, 'Settings')
+    greenButton = button((192, 192, 192),700,450,100,40, 'Start')
+    settingsBt = button((192, 192, 192),700,500,100,40, 'Settings')
     while wait:
         pygame.draw.rect(screen,(255,255,255),pygame.Rect(50,0,640,480))
         redrawWindow()
@@ -170,7 +170,7 @@ def main():
             if greenButton.isOver(pos):
                 wait = False
                 start = True
-                greenButton = button((192, 192, 192),470,500,100,40, 'Quit')
+                greenButton = button((192, 192, 192),700,450,100,40, 'Quit')
                 time.sleep(1)
             elif settingsBt.isOver(pos):
                 config = True
