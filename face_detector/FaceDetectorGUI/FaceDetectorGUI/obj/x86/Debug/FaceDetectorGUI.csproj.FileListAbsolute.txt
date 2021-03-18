@@ -7,3 +7,12 @@
 /home/patc/Projects/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/Newtonsoft.Json.dll
 /home/patc/Projects/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/Newtonsoft.Json.xml
 /home/patc/Projects/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.csproj.CopyComplete
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/FaceDetectorGUI.exe
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/FaceDetectorGUI.pdb
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/Newtonsoft.Json.dll
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/bin/Debug/Newtonsoft.Json.xml
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.csprojAssemblyReference.cache
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.csproj.CoreCompileInputs.cache
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.csproj.CopyComplete
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.exe
+/home/patc/SoftwareDeveloperProject/face_detector/FaceDetectorGUI/FaceDetectorGUI/obj/x86/Debug/FaceDetectorGUI.pdb
