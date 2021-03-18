@@ -14,17 +14,17 @@ COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font(None, 32)
 
-def inputBoxTest(screen):
+def inputBoxTest(screen,x,y):
     font = pg.font.Font(None, 32)
     clock = pg.time.Clock()
-    input_box = pg.Rect(100, 100, 140, 32)
+    input_box = pg.Rect(x, y, 140, 32)
     color_inactive = pg.Color('lightskyblue3')
     color_active = pg.Color('dodgerblue2')
     color = color_inactive
     active = False
     text = ''
     done = False
-
+    greenButton = button((192, 192, 192),700,450,100,40, 'Back')
     while not done:
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -189,8 +189,20 @@ def main():
                 pygame.display.quit()
                 pygame.quit()
                 time.sleep(1)
+
     while config:
-        inputBoxTest(screen)
+        inputBoxTest(screen,100,100)
+        greenButton = button((192, 192, 192),700,450,100,40, 'Back')
+        pygame.display.update()
+        for event in pygame.event.get():
+            pos = pygame.mouse.get_pos()
+        if event.type == pygame.MOUSEMOTION:
+            if greenButton.isOver(pos):
+                greenButton.color = (20,100,100)
+            elif settingsBt.isOver(pos):
+                settingsBt.color = (20,100,100)
+            else:
+                greenButton.color = (192, 192, 192)
 #         input_box1 = InputBox(250, 490, 100, 32)
 #         input_box2 = InputBox(250, 530, 100, 32)
 #         input_boxes = [input_box1, input_box2]
