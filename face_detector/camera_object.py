@@ -2,7 +2,7 @@
 import json
 import pygame
 import cv2
-from gtts import gTTS
+#from gtts import gTTS
 import os
 import pygame as pg
 import time
@@ -14,6 +14,7 @@ COLOR_INACTIVE = pg.Color('lightskyblue3')
 COLOR_ACTIVE = pg.Color('dodgerblue2')
 FONT = pg.font.Font(None, 32)
 
+#Function to create input boxes
 def inputBoxTest(screen,x,y):
     font = pg.font.Font(None, 32)
     clock = pg.time.Clock()
