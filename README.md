@@ -15,7 +15,7 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 
 ## A C# GUI has been added to the face detector
 
-##Phase I Coding Evaluation (100 points)
+## Phase I Coding Evaluation (100 points)
 Note: this is a coding phase, what counts the most is individual coding commits in GitHub.
 1. A clear roadmap of what is to be implemented. (10)
 a. The vision of what is to be built in the coding phase
@@ -34,7 +34,8 @@ b. Active communication among teammates
 a. Code commitment frequency (at least 1 meaningful commit per week)
 b. Comments provided with the code commits
 c. Quality of the code
-Phase II Coding Evaluation (100 points)
+
+## Phase II Coding Evaluation (100 points)
 Note: this is a coding phase, what counts the most is individual coding commits in GitHub.
 1. A clear roadmap of what is to be implemented. (10)
 a. The vision of what is to be built in the coding phase
