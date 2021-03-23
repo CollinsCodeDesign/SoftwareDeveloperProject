@@ -15,7 +15,7 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 
 ## A C# GUI has been added to the face detector
 
-## Phase I Coding Evaluation (100 points)
+## Phase I Coding Evaluation (100 points) 3/26/21
 Note: this is a coding phase, what counts the most is individual coding commits in GitHub.
 1. A clear roadmap of what is to be implemented. (10)
 a. The vision of what is to be built in the coding phase
