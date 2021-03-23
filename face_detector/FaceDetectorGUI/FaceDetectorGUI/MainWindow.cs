@@ -31,6 +31,7 @@ public partial class MainWindow : Gtk.Window
     protected void OnDeleteEvent(object sender, DeleteEventArgs a)
     {
         ExecuteBashCommand("kill $(cat camera_pid)");
+        timer1.Stop();
         Application.Quit();
         a.RetVal = true;
     }
