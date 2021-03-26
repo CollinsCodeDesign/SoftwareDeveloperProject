@@ -11,3 +11,15 @@ C:\Users\patri\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\Fa
 C:\Users\patri\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.dll
 C:\Users\patri\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.xml
 C:\Users\patri\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CopyComplete
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.exe.config
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.exe
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.pdb
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.dll
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.xml
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csprojAssemblyReference.cache
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Form1.resources
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Properties.Resources.resources
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.GenerateResource.cache
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CopyComplete
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.exe
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.pdb
