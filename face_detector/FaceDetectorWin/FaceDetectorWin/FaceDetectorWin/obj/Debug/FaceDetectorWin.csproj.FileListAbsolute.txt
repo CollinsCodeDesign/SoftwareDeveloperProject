@@ -20,6 +20,7 @@ C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetec
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Form1.resources
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Properties.Resources.resources
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.GenerateResource.cache
+C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CoreCompileInputs.cache
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CopyComplete
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.exe
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.pdb

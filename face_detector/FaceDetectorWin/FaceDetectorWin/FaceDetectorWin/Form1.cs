@@ -40,7 +40,7 @@ namespace FaceDetectorWin
         public void cmdCommand()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = @"C:\Users\chris\AppData\Local\Programs\Thonny\python.exe";
+            startInfo.FileName = @"" + textBox1.Text;
             startInfo.Arguments = @"camera_object_mono.py";
             Process process = new Process();
             process.StartInfo = startInfo;
