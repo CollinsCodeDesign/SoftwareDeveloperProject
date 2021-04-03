@@ -16,16 +16,18 @@ namespace FaceDetectorWin
 {
     public partial class Form1 : Form
     {
+        //Ran on start
         public Form1()
         {
             InitializeComponent();
         }
-
+        //Code ran when button is clicked
         private void startBt_Click(object sender, EventArgs e)
         {
             cmdCommand();
             InitTimer();
         }
+        //Create timer and method to start it
         private System.Timers.Timer timer1;
         public void InitTimer()
         {
@@ -34,6 +36,7 @@ namespace FaceDetectorWin
             timer1.Interval = 60; // in miliseconds
             timer1.Start();
         }
+        //Process to start python and script when button is clicked
         public void cmdCommand()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
@@ -44,6 +47,7 @@ namespace FaceDetectorWin
             process.Start();
 
         }
+        //Method ran everytime the timer is triggered 
         private void timer1_Tick(object sender, EventArgs e)
         {
             try
@@ -64,6 +68,7 @@ namespace FaceDetectorWin
             }
 
         }
+        //Test method created to resolve flicker but failed
         public static Bitmap ByteToImage(byte[] blob)
         {
             MemoryStream mStream = new MemoryStream();
@@ -73,6 +78,8 @@ namespace FaceDetectorWin
             mStream.Dispose();
             return bm;
         }
+        //Method ran if the stop button is clicked 
+        //Which kills the timer and the python script process
         private void stopBt_Click(object sender, EventArgs e)
         {
             timer1.Stop();
