@@ -21,7 +21,7 @@ green = (0, 200, 0)
 bright_red = (255,0,0)
 bright_green = (0,255,0)
 
-faceBox_width = 225
+faceBox_width = 255
 
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Facebox Dodging')
@@ -169,7 +169,7 @@ def game_loop():
                 crash()
         
         pygame.display.update()
-        clock.tick(60)
+        clock.tick(160)
 
 game_intro()
 game_loop()
