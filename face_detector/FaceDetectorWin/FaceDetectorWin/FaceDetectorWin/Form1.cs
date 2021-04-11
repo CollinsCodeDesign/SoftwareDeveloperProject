@@ -40,6 +40,7 @@ namespace FaceDetectorWin
         public void cmdCommand()
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
             startInfo.FileName = @"" + textBox1.Text;
             startInfo.Arguments = @"camera_object_mono.py";
             Process process = new Process();
@@ -87,6 +88,11 @@ namespace FaceDetectorWin
             {
                 process.Kill();
             }
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
