@@ -136,7 +136,7 @@ def game_loop():
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
         for (x,y,w,h) in faces:
-            cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),1)
+            #cv2.rectangle(img,(x,y),(x+w,y+h),(0,0,255),1)
             roi_gray = gray[y:y+h, x:x+w]
             roi_color = img[y:y+h, x:x+w]
             font = cv2.FONT_HERSHEY_PLAIN 
@@ -145,9 +145,10 @@ def game_loop():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-        
+        cv2.imwrite('1.png',img)
+        Backimg = pygame.image.load('1.png')
 #         x += x_change
-        gameDisplay.fill(white)
+        gameDisplay.blit(Backimg, (0,0))
         things(thing_startx, thing_starty, thing_width, thing_height, black)
         thing_starty += thing_speed
         faceBox(x,y)

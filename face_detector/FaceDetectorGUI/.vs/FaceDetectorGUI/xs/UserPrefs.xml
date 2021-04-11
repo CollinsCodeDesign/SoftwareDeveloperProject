@@ -1,9 +1,9 @@
 ﻿<Properties StartupConfiguration="{CA9EEC98-C671-4A84-BD4D-C29A3EF61282}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="../FaceDetectorWin/FaceDetectorWin/FaceDetectorWin/Form1.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FaceDetectorGUI/MainWindow.cs">
     <Files>
       <File FileName="FaceDetectorGUI/Program.cs" Line="1" Column="1" />
-      <File FileName="FaceDetectorGUI/MainWindow.cs" Line="41" Column="71" />
-      <File FileName="../FaceDetectorWin/FaceDetectorWin/FaceDetectorWin/Form1.cs" Line="86" Column="72" />
+      <File FileName="../FaceDetectorWin/FaceDetectorWin/FaceDetectorWin/Form1.cs" Line="36" Column="32" />
+      <File FileName="FaceDetectorGUI/MainWindow.cs" Line="5" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
