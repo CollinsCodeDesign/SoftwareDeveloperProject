@@ -23,3 +23,16 @@ C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetec
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CopyComplete
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.exe
 C:\Users\chris\OneDrive\Desktop\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.pdb
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.exe.config
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.exe
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\FaceDetectorWin.pdb
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.dll
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\bin\Debug\xunit.assert.xml
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csprojAssemblyReference.cache
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Form1.resources
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.Properties.Resources.resources
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.GenerateResource.cache
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CoreCompileInputs.cache
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.csproj.CopyComplete
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.exe
+C:\Users\collinp\Documents\SoftwareDeveloperProject\face_detector\FaceDetectorWin\FaceDetectorWin\FaceDetectorWin\obj\Debug\FaceDetectorWin.pdb

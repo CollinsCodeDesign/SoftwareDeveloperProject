@@ -13,13 +13,13 @@ namespace FaceDetectorWin
         public Form1()
         {
             InitializeComponent();
-            
         }
         //Code ran when button is clicked
         private void startBt_Click(object sender, EventArgs e)
         {
-            cmdCommand();
+            cmdCommand(comboBox1.Text, comboBox2.Text);
             InitTimer();
+
         }
         //Create timer and method to start it
         private System.Timers.Timer timer1;
@@ -30,16 +30,31 @@ namespace FaceDetectorWin
             timer1.Interval = 100; // in miliseconds
             timer1.Start();
         }
-        //Process to start python and script when button is clicked
-        public void cmdCommand()
+        private System.Timers.Timer timer2;
+        public void InitTimer2()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.FileName = @"" + comboBox1.Text;
-            startInfo.Arguments = @"camera_object_mono.py";
-            Process process = new Process();
-            process.StartInfo = startInfo;
-            process.Start();
+            timer2 = new System.Timers.Timer();
+            timer2.Elapsed += new ElapsedEventHandler(timer2_Tick);
+            timer2.Interval = 100; // in miliseconds
+            timer2.Start();
+        }
+        //Process to start python and script when button is clicked
+        public void cmdCommand(string python, string script)
+        {
+            if (String.IsNullOrWhiteSpace(python) || String.IsNullOrWhiteSpace(script))
+            {
+                MessageBox.Show("Empty Settings Box");
+            }
+            else
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                startInfo.FileName = @"" + python;
+                startInfo.Arguments = @"" + script.ToLower();
+                Process process = new Process();
+                process.StartInfo = startInfo;
+                process.Start();
+            }
 
         }
         //Method ran everytime the timer is triggered 
@@ -54,6 +69,22 @@ namespace FaceDetectorWin
             catch (Exception ex)
             {
                 Console.WriteLine("Error {0} Error on image update", ex);
+            }
+
+        }
+        //Method ran everytime the timer is triggered 
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                var buffer = File.ReadAllBytes("screenshot.jpeg");
+                //pictureBox1.Image = BytesToBitmap(buffer);
+                pictureBox2.Image = ByteToImage(buffer);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error {0} Error on image update", ex);
+                //cmdCommand(comboBox1.Text, comboBox3.Text);
             }
 
         }
@@ -72,15 +103,34 @@ namespace FaceDetectorWin
         //Which kills the timer and the python script process
         private void stopBt_Click(object sender, EventArgs e)
         {
-            timer1.Stop();
+            if (timer1 != null)
+            {
+                timer1.Stop();
+            }
             foreach (var process in Process.GetProcessesByName("python"))
             {
                 process.Kill();
             }
         }
 
+        private void gameStartBt_Click(object sender, EventArgs e)
+        {
+            cmdCommand(comboBox1.Text, comboBox3.Text);
+            InitTimer2();
 
+        }
 
+        private void gameStopBt_Click(object sender, EventArgs e)
+        {
+            if (timer2 != null)
+            {
+                timer2.Stop();
+            }
+            foreach (var process in Process.GetProcessesByName("python"))
+            {
+                process.Kill();
+            }
 
+        }
     }
 }
