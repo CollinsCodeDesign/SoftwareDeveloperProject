@@ -15,3 +15,5 @@ Authors: Patrick, Rachael, and Pierce.<br /><br />
 
 ## A C# GUI has been added to the face detector
 <img width="539" alt="gui" src="https://user-images.githubusercontent.com/78176799/114289079-ad3a6c80-9a3a-11eb-83ba-8a1be42e7f08.PNG">
+## IT WORKS!!!
+![image](https://user-images.githubusercontent.com/78176799/114902348-5981a780-9ddb-11eb-863d-560a985811d5.png)
