@@ -1,16 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Timers;
-using System.IO;
 using System.Diagnostics;
-using Xunit;
+using System.Drawing;
+using System.IO;
+using System.Timers;
+using System.Windows.Forms;
 
 namespace FaceDetectorWin
 {
@@ -20,6 +13,7 @@ namespace FaceDetectorWin
         public Form1()
         {
             InitializeComponent();
+            
         }
         //Code ran when button is clicked
         private void startBt_Click(object sender, EventArgs e)
@@ -33,7 +27,7 @@ namespace FaceDetectorWin
         {
             timer1 = new System.Timers.Timer();
             timer1.Elapsed += new ElapsedEventHandler(timer1_Tick);
-            timer1.Interval = 60; // in miliseconds
+            timer1.Interval = 100; // in miliseconds
             timer1.Start();
         }
         //Process to start python and script when button is clicked
@@ -41,7 +35,7 @@ namespace FaceDetectorWin
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            startInfo.FileName = @"" + textBox1.Text;
+            startInfo.FileName = @"" + comboBox1.Text;
             startInfo.Arguments = @"camera_object_mono.py";
             Process process = new Process();
             process.StartInfo = startInfo;
@@ -53,15 +47,9 @@ namespace FaceDetectorWin
         {
             try
             {
-                if (pictureBox1.Image != null)
-                {
-                    pictureBox1.Image = null;
-                }
-                else
-                {
-                    var buffer = File.ReadAllBytes("1.png");
-                    pictureBox1.Image = ByteToImage(buffer);
-                }
+                var buffer = File.ReadAllBytes("1.png");
+                //pictureBox1.Image = BytesToBitmap(buffer);
+                pictureBox1.Image = ByteToImage(buffer);   
             }
             catch (Exception ex)
             {
@@ -79,6 +67,7 @@ namespace FaceDetectorWin
             mStream.Dispose();
             return bm;
         }
+        
         //Method ran if the stop button is clicked 
         //Which kills the timer and the python script process
         private void stopBt_Click(object sender, EventArgs e)
@@ -90,14 +79,8 @@ namespace FaceDetectorWin
             }
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
 
-        }
 
-        private void tabPage3_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }
