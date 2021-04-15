@@ -131,6 +131,7 @@ def game_loop():
     #screen = pygame.display.set_mode((display_width,display_height))
     pygame.display.set_caption("Facebox Dodge Game")
     face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
+    saveEO = True
     while not gameExit:
         ret, img = capture.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -164,13 +165,17 @@ def game_loop():
         if y < thing_starty+thing_height:
             right_corner= int(x) + faceBox_width
             #crash is detected if the object is between two points
-            if  thing_startx >= int(x) - 90 and right_corner + 90 >= (thing_startx + thing_width):
+            if  thing_startx >= int(x) - 85 and right_corner + 85 >= (thing_startx + thing_width):
                 capture.release()
                 crash()
         
         pygame.display.update()
-        pygame.image.save(gameDisplay, "screenshot.jpeg")
-        clock.tick(120)
+        if saveEO:
+            pygame.image.save(gameDisplay, "screenshot.jpeg")
+            saveEO = False
+        else:
+            saveEO = True
+        clock.tick(160)
 
 #game_intro()
 game_loop()

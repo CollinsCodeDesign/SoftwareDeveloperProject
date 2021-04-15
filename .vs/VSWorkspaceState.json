@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\face_detector",
-    "\\face_detector\\FaceDetectorGUI",
-    "\\face_detector\\FaceDetectorWin",
-    "\\face_detector\\FaceDetectorWin\\FaceDetectorWin"
+    ""
   ],
-  "SelectedNode": "\\face_detector\\FaceDetectorWin\\FaceDetectorWin\\FaceDetectorWin.sln",
+  "SelectedNode": "\\FaceDetectorWin.sln (face_detector\\FaceDetectorWin\\FaceDetectorWin\\FaceDetectorWin.sln)",
   "PreviewInSolutionExplorer": false
 }

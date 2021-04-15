@@ -48,7 +48,7 @@ namespace FaceDetectorWin
             else
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 startInfo.FileName = @"" + python;
                 startInfo.Arguments = @"" + script.ToLower();
                 Process process = new Process();
@@ -63,12 +63,12 @@ namespace FaceDetectorWin
             try
             {
                 var buffer = File.ReadAllBytes("1.png");
-                //pictureBox1.Image = BytesToBitmap(buffer);
                 pictureBox1.Image = ByteToImage(buffer);   
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error {0} Error on image update", ex);
+                pictureBox1.Image = (Image)pictureBox1.Image.Clone();
             }
 
         }
@@ -78,13 +78,12 @@ namespace FaceDetectorWin
             try
             {
                 var buffer = File.ReadAllBytes("screenshot.jpeg");
-                //pictureBox1.Image = BytesToBitmap(buffer);
                 pictureBox2.Image = ByteToImage(buffer);
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error {0} Error on image update", ex);
-                //cmdCommand(comboBox1.Text, comboBox3.Text);
+                pictureBox2.Image = (Image)pictureBox2.Image.Clone();
             }
 
         }
