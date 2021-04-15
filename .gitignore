@@ -1,4 +1,3 @@
 // Ignore .class files and everything
 //   in the bin directory
 *.class
-bin/
