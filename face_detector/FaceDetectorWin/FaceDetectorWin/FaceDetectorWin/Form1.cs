@@ -68,7 +68,6 @@ namespace FaceDetectorWin
             catch (Exception ex)
             {
                 Console.WriteLine("Error {0} Error on image update", ex);
-                pictureBox1.Image = (Image)pictureBox1.Image.Clone();
             }
 
         }
@@ -83,7 +82,6 @@ namespace FaceDetectorWin
             catch (Exception ex)
             {
                 Console.WriteLine("Error {0} Error on image update", ex);
-                pictureBox2.Image = (Image)pictureBox2.Image.Clone();
             }
 
         }
