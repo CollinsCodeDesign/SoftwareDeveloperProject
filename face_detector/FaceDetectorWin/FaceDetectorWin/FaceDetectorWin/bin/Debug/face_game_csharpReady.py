@@ -40,6 +40,12 @@ def things(thingx, thingy, thingw, thingh, color):
 def faceBox(x,y):
     gameDisplay.blit(faceBoxImg,(x,y))
 
+def saveDisplay(display):
+    try:
+        pygame.image.save(display,"screenshot.jpeg")
+    except:
+        print("An exception occurred")
+
 def crash():
     message_display('Game Over!')
 
@@ -54,7 +60,7 @@ def message_display(text):
     gameDisplay.blit(TextSurf, TextRect)
     
     pygame.display.update()
-    pygame.image.save(gameDisplay, "screenshot.jpeg")
+    saveDisplay(gameDisplay)
     time.sleep(1)
     
     game_loop()
@@ -171,7 +177,7 @@ def game_loop():
         
         pygame.display.update()
         if saveEO:
-            pygame.image.save(gameDisplay, "screenshot.jpeg")
+            saveDisplay(gameDisplay)
             saveEO = False
         else:
             saveEO = True
