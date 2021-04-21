@@ -22,32 +22,26 @@ bright_red = (255,0,0)
 bright_green = (0,255,0)
 
 faceBox_width = 255
-#faceBox_height = 230
-
-pause = False
 
 gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Facebox Dodging')
 clock = pygame.time.Clock()
 
-faceBoxImg = pygame.image.load('lm2.png')
-
-fruitImg = ['fruit_thing.png','pineapple_thing.png','strawberry_thing.png']
-fruitThing = pygame.image.load(random.choice(fruitImg))
+faceBoxImg = pygame.image.load('square.png')
 
 def things_dodged(count):
     font = pygame.font.SysFont(None, 50)
     text = font.render("Dodged: "+str(count), True, black)
     gameDisplay.blit(text,(0,0))
 
-# def things(thingx, thingy, thingw, thingh, color):
-#     pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
-    
-def things(thingx, thingy, thingw, thingh):
-    gameDisplay.blit((pygame.image.load(random.choice(fruitImg))),(thingx,thingy,thingw,thingh))
+def things(thingx, thingy, thingw, thingh, color):
+    pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
 
 def faceBox(x,y):
     gameDisplay.blit(faceBoxImg,(x,y))
+
+def crash():
+    message_display('Game Over!')
 
 def text_objects(text, font):
     textSurface = font.render(text, True, black)
@@ -77,17 +71,12 @@ def button(msg, x, y, w, h, ic, ac, action=None):
     if x + w > mouse[0] > x and y + h > mouse[1] > y:
         pygame.draw.rect(gameDisplay, ac, (x,y,w,h))
         if click[0] == 1 and action != None:
-            action()
-            
-#old way of using buttons
             #print("Pierce")
-#             if action == "play":
-#                 game_loop()
-#             elif action == "quit":
-#                 pygame.quit()
-#                 quit()
-#             elif action == "continue":
-#                 unpause()
+            if action == "play":
+                game_loop()
+            elif action == "quit":
+                pygame.quit()
+                quit()
     else:
         pygame.draw.rect(gameDisplay, ic, (x,y,w,h))
             
@@ -95,42 +84,7 @@ def button(msg, x, y, w, h, ic, ac, action=None):
     textSurf, textRect = text_objects(msg, smallText)
     textRect.center = ((x + (w/2)), (y+(h/2)))
     gameDisplay.blit(textSurf, textRect)
-
-def quitgame():
-    pygame.quit()
-    quit()
-
-def unpause():
-    global pause
-    pause = False
-
-def paused():
     
-    while pause:
-        for event in pygame.event.get():
-            #print(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-                
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',50)
-        TextSurf, TextRect = text_objects("Paused", largeText)
-        TextRect.center = ((display_width/2), (display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
-        
-        button("Unpause",50,375,200,100, green, bright_green, unpause)
-        button("Quit",400,375,200,100, red, bright_red, quitgame)
-        mouse = pygame.mouse.get_pos()
-        
-        #print(mouse)
-        
-        #pygame.draw.rect(gameDisplay, red, (1300,900,150,100))
-        
-        pygame.display.update()
-        clock.tick(5)
-        
-        
 def game_intro():
     
     intro = True
@@ -147,34 +101,8 @@ def game_intro():
         TextRect.center = ((display_width/2), (display_height/2))
         gameDisplay.blit(TextSurf, TextRect)
         
-        button("Play!",100,375,150,100, green, bright_green, game_loop)
-        button("Quit",400,375,150,100, red, bright_red, quitgame)
-        mouse = pygame.mouse.get_pos()
-        
-        #print(mouse)
-        
-        #pygame.draw.rect(gameDisplay, red, (1300,900,150,100))
-        
-        pygame.display.update()
-        clock.tick(5)
-        
-def gameOver():
-    clock.tick(15)
-    while True:
-        for event in pygame.event.get():
-            #print(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-                
-        gameDisplay.fill(white)
-        largeText = pygame.font.Font('freesansbold.ttf',50)
-        TextSurf, TextRect = text_objects("Game Over!", largeText)
-        TextRect.center = ((display_width/2), (display_height/2))
-        gameDisplay.blit(TextSurf, TextRect)
-        
-        button("Play Again",50,375,200,100, green, bright_green, game_loop)
-        button("Quit",400,375,200,100, red, bright_red, quitgame)
+        button("Play!",100,400,150,100, green, bright_green, "play")
+        button("Quit",400,400,150,100, red, bright_red, "quit")
         mouse = pygame.mouse.get_pos()
         
         #print(mouse)
@@ -184,10 +112,8 @@ def gameOver():
         pygame.display.update()
         clock.tick(5)
 
+
 def game_loop():
-    
-    global pause
-    
     x = (display_width * 0.44)
     y = (display_height * 0.75)
     thing_startx = random.randint(0, display_width)
@@ -205,14 +131,7 @@ def game_loop():
     #screen = pygame.display.set_mode((display_width,display_height))
     pygame.display.set_caption("Facebox Dodge Game")
     face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
-    
     while not gameExit:
-#         for event in pygame.event.get():
-#             if event.type == pygame.KEYDOWN:
-#                 if event.key == pygame.K_p:
-#                     pause = True
-#                     paused()
-        
         ret, img = capture.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
@@ -226,17 +145,13 @@ def game_loop():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_p:
-                    pause = True
-                    paused()
         cv2.imwrite('1.png',img)
         Backimg = pygame.image.load('1.png')
 #         x += x_change
         gameDisplay.blit(Backimg, (0,0))
-        things(thing_startx, thing_starty, thing_width, thing_height)
+        things(thing_startx, thing_starty, thing_width, thing_height, black)
         thing_starty += thing_speed
-        faceBox(x-45,y-50)
+        faceBox(x,y)
         things_dodged(dodged)
         
         if thing_starty > display_height:
@@ -247,12 +162,11 @@ def game_loop():
             thing_width += (dodged * 1)
         
         if y < thing_starty+thing_height:
-            right_cornerw= int(x) + faceBox_width
-            #left_cornerh= int(y) + faceBox_height
+            right_corner= int(x) + faceBox_width
             #crash is detected if the object is between two points
-            if  thing_startx >= int(x) - 116 and right_cornerw + 64 >= (thing_startx + thing_width):
+            if  thing_startx >= int(x) - 90 and right_corner + 90 >= (thing_startx + thing_width):
                 capture.release()
-                gameOver()
+                crash()
         
         pygame.display.update()
         clock.tick(160)
@@ -261,6 +175,4 @@ game_intro()
 game_loop()
 pygame.quit()
 quit()
-
-
 
