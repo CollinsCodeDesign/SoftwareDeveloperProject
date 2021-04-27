@@ -27,7 +27,7 @@ namespace FaceDetectorWin
         {
             timer1 = new System.Timers.Timer();
             timer1.Elapsed += new ElapsedEventHandler(timer1_Tick);
-            timer1.Interval = 100; // in miliseconds
+            timer1.Interval = 70; // in miliseconds
             timer1.Start();
         }
         private System.Timers.Timer timer2;
@@ -35,7 +35,7 @@ namespace FaceDetectorWin
         {
             timer2 = new System.Timers.Timer();
             timer2.Elapsed += new ElapsedEventHandler(timer2_Tick);
-            timer2.Interval = 100; // in miliseconds
+            timer2.Interval = 70; // in miliseconds
             timer2.Start();
         }
         //Process to start python and script when button is clicked
