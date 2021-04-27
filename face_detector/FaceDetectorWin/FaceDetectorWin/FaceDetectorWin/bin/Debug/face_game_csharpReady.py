@@ -28,7 +28,7 @@ pygame.display.set_caption('Facebox Dodging')
 clock = pygame.time.Clock()
 
 faceBoxImg = pygame.image.load('lm2.png')
-fruitImg = list(range(1, 31))
+fruitImg = list(range(1,5))
 
 def things_dodged(count):
     font = pygame.font.SysFont(None, 50)
@@ -153,7 +153,7 @@ def game_loop():
             roi_gray = gray[y:y+h, x:x+w]
             roi_color = img[y:y+h, x:x+w]
             font = cv2.FONT_HERSHEY_PLAIN 
-            img = cv2.putText(img, 'Face', (x+5,y+15), font, 1, (0,255,0), 1, cv2.LINE_AA)
+            #img = cv2.putText(img, 'Face', (x+5,y+15), font, 1, (0,255,0), 1, cv2.LINE_AA)
         for event in pygame.event.get() :
             if event.type == pygame.QUIT:
                 pygame.quit()
@@ -182,7 +182,7 @@ def game_loop():
         if y < thing_starty+thing_height:
             right_corner= int(x) + faceBox_width
             #crash is detected if the object is between two points
-            if  thing_startx >= int(x) - 85 and right_corner + 85 >= (thing_startx + thing_width):
+            if  thing_startx >= int(x) - 120 and right_corner - 10 >= (thing_startx + thing_width):
                 capture.release()
                 crash()
         
