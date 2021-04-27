@@ -27,15 +27,20 @@ gameDisplay = pygame.display.set_mode((display_width,display_height))
 pygame.display.set_caption('Facebox Dodging')
 clock = pygame.time.Clock()
 
-faceBoxImg = pygame.image.load('square.png')
+faceBoxImg = pygame.image.load('lm2.png')
+fruitImg = list(range(1, 31))
 
 def things_dodged(count):
     font = pygame.font.SysFont(None, 50)
     text = font.render("Dodged: "+str(count), True, black)
     gameDisplay.blit(text,(0,0))
 
-def things(thingx, thingy, thingw, thingh, color):
-    pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
+def things(thingx, thingy, thingw, thingh, color, imageNum):
+    #pygame.draw.rect(gameDisplay, color, [thingx, thingy, thingw, thingh])
+    for x in range(len(fruitImg)):
+        if x == imageNum:
+            imageName="fireball/" + str(fruitImg[x]) + ".png"
+            gameDisplay.blit((pygame.image.load(imageName)),(thingx,thingy,thingw,thingh))
 
 def faceBox(x,y):
     gameDisplay.blit(faceBoxImg,(x,y))
@@ -138,6 +143,7 @@ def game_loop():
     pygame.display.set_caption("Facebox Dodge Game")
     face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
     saveEO = True
+    imageNum=0
     while not gameExit:
         ret, img = capture.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -156,9 +162,14 @@ def game_loop():
         Backimg = pygame.image.load('1.png')
 #         x += x_change
         gameDisplay.blit(Backimg, (0,0))
-        things(thing_startx, thing_starty, thing_width, thing_height, black)
+        things(thing_startx, thing_starty, thing_width, thing_height, black, imageNum)
+        if imageNum <= len(fruitImg):
+            imageNum += 1
+        else:
+            imageNum = 0
+            
         thing_starty += thing_speed
-        faceBox(x,y)
+        faceBox(x-45,y-50)
         things_dodged(dodged)
         
         if thing_starty > display_height:
