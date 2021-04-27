@@ -162,11 +162,12 @@ def game_loop():
         Backimg = pygame.image.load('1.png')
 #         x += x_change
         gameDisplay.blit(Backimg, (0,0))
-        things(thing_startx, thing_starty, thing_width, thing_height, black, imageNum)
         if imageNum <= len(fruitImg):
+            things(thing_startx, thing_starty, thing_width, thing_height, black, imageNum)
             imageNum += 1
         else:
             imageNum = 0
+            things(thing_startx, thing_starty, thing_width, thing_height, black, imageNum)
             
         thing_starty += thing_speed
         faceBox(x-45,y-50)

@@ -48,7 +48,7 @@ namespace FaceDetectorWin
             else
             {
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                //startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 startInfo.FileName = @"" + python;
                 startInfo.Arguments = @"" + script.ToLower();
                 Process process = new Process();
